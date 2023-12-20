@@ -1,43 +1,86 @@
 # Desafio de Data Engineer - EMD
 
-Repositório de instrução para o desafio técnico para vaga de Pessoa Engenheira de Dados no Escritório de Dados do Rio de Janeiro
+Este é o desafio técnico que fiz para vaga de Pessoa Engenheira de Dados no Escritório de Dados do Rio de Janeiro.
 
-## Descrição do desafio
+## Configuração de ambiente
+### Requisitos
 
-Neste desafio você deverá capturar, estruturar, armazenar e transformar dados de uma API instantânea. A API consiste nos dados de GPS do BRT que são gerados na hora da consulta com o último sinal transmitido por cada veículo.
-
-Para o desafio, será necessário construir uma pipeline que captura os dados minuto a minuto e gera um arquivo no formato CSV. O arquivo gerado deverá conter no mínimo 10 minutos de dados capturados (estruture os dados da maneira que achar mais conveniente), então carregue os dados para uma tabela no Postgres. Por fim, crie uma tabela derivada usando o DBT. A tabela derivada deverá conter o ID do onibus, posição e sua a velocidade.
-
-A pipeline deverá ser construída subindo uma instância local do Prefect (em Python). Utilize a versão *0.15.9* do Prefect.
-
-## O que iremos avaliar
-
-- Completude: A solução proposta atende a todos os requisitos do desafio?
-- Simplicidade: A solução proposta é simples e direta? É fácil de entender e trabalhar?
-- Organização: A solução proposta é organizada e bem documentada? É fácil de navegar e encontrar o que se procura?
-- Criatividade: A solução proposta é criativa? Apresenta uma abordagem inovadora para o problema proposto?
-- Boas práticas: A solução proposta segue boas práticas de Python, Git, Docker, etc.?
-
-## Atenção
-
-- A solução desse desafio deve ser publicada em um fork deste repositório no GitHub.
-- O link do repositório deve ser enviado até às 23:59, horário de Brasília, do dia 26 de julho de 2023 (quarta-feira) para o e-mail utilizado para contato com o assunto "Desafio Data Engineer - EMD".
-- Você deve ser capaz de apresentar sua solução, explicando como a idealizou, caso seja aprovado(a) para a próxima etapa.
-
-## Links de referência / utilidades
-
-- Documentação [Prefect](https://docs-v1.prefect.io/)
-- Documentação [DBT](https://docs.getdbt.com/docs/introduction)
-- Instalar e configurar o
-   [Prefect Server](https://docs.prefect.io/orchestration/getting-started/install.html)
-   locamente com um [Docker Agent](https://docs.prefect.io/orchestration/agents/docker.html)
-- Construir a pipeline de captura da [API do
-   BRT](https://dados.mobilidade.rio/gps/brt)
-- Repositório pipelines do [Escritorio de Dados](https://github.com/prefeitura-rio/pipelines)
-- Repositório de modelos DBT do [Escritorio de Dados](https://github.com/prefeitura-rio/queries-datario)
+- `Python 3.8.x`
+- `pip`
+- `Banco de dados PostgreSQL`
+- `Ambiente virtual (recomendado)`
 
 
-## Dúvidas?
+### Procedimentos
 
-Fale conosco pelo e-mail que foi utilizado para o envio desse desafio.
+- Clonar esse repositório
+
+```
+git clone https://github.com/PedroSiqueira1/emd-desafio-data-eng
+```
+
+- Abrí-lo no seu editor de texto
+
+- Instalar as dependências do projeto
+
+```
+pip install -r requirements.txt
+```
+
+- Criar um arquivo `.env` na raiz do projeto e adicionar as configurações necessárias da seguinte forma:
+
+ ```
+    HOST=seu_host
+    USER=seu_usario
+    PASSWORD=sua_senha
+    DATABASE=seu_database
+    PORT=sua_porta
+    DIALECT=postgresql+psycopg2 (Não modifique esta variável)
+```
+
+- Pronto! Seu ambiente está configurado para desenvolvimento.
+
+---
+
+
+## Como rodar as aplicações
+
+### Como rodar a pipeline usando o Prefect
+
+- Navegue até o diretório da pipeline
+```
+cd emd-desafio-data-eng/pipelines/brt
+```
+
+- Execute o script `run.py`
+```
+python run.py
+```
+
+- Com isso, um schema `transporte_rodoviario_gps` e uma tabela `dados_brt` serão gerados em seu banco, inicialmente vazios.
+
+- Quando o script acabar de rodar, a tabela estará populada com os dados da API!
+
+- (Opcional) Se você possuir o Prefect Cloud configurado, é possível utilizá-lo para monitorar as runs do pipeline, para isso rode o comando `prefect agent local start` em um terminal dentro do diretório do projeto e acompanhe pelo site `cloud.prefect.io`
+
+
+### Como gerar a tabela derivada usando o DBT
+
+- Navegue até o diretório do DBT
+```
+cd emd-desafio-data-eng/tables/dados_brt
+```
+
+- Execute o comando `dbt run`
+
+- Feito! A tabela derivada estará em seu banco no formato de uma view
+ndado) Quando acabar de desenvolver sua pipeline, delete todas as versões da mesma pela UI do Prefect.
+
+- (Opcional) Após a execução bem-sucedida, você pode gerar e visualizar a documentação usando os seguintes comandos:
+
+```
+dbt docs generate
+dbt docs serve
+```
+
 

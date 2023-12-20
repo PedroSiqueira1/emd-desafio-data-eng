@@ -1,5 +1,12 @@
 {{ config(materialized='view')}}
 
+
+WITH dados_brt AS (
+
+    SELECT *
+    FROM transporte_rodoviario_gps.dados_brt
+)
+
 SELECT
   id,
   codigo,
@@ -7,4 +14,4 @@ SELECT
   longitude,
   velocidade
 
-FROM transporte_rodoviario_gps.dados_brt
+FROM dados_brt

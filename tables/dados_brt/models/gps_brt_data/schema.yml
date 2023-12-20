@@ -5,15 +5,31 @@ sources:
     database: Prefeitura
     tables:
       - name: gps_brt_data
-        description: "View da tabela de dados do BRT."
+        description: "Dados do GPS dos BRTs."
         columns:
           - name: id
             description: "Id do registro"
+          - name: placa
+            description: "Placa do BRT"
           - name: codigo
-            description: "Código do ônibus"
+            description: "Código do veículo"
+          - name: linha
+            description: "Linha do BRT"
           - name: latitude
             description: "Latitude do veículo"
           - name: longitude
             description: "Longitude do veículo"
+          - name: datahora
+            description: "Data e hora da coleta dos dados"
           - name: velocidade
             description: "Velocidade do BRT"
+          - name: id_migracao_trajeto
+            description: "Identificação da rota do BRT"
+          - name: sentido
+            description: "Sentido do trajeto do BRT"
+          - name: trajeto
+            description: "Itinerário do BRT"
+          - name: hodometro
+            description: "Odômetro do veículo, quilometragem rodada pelo veículo"
+          - name: direcao
+            description: "Direção do trajeto do BRT"

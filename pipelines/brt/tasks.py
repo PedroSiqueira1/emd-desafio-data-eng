@@ -1,11 +1,9 @@
-from io import StringIO
 import pandas as pd
 from prefect import task
 import requests
 from utils import log
 from dotenv import load_dotenv
 import os
-import psycopg2
 import json
 from sqlalchemy import create_engine
 from datetime import datetime
