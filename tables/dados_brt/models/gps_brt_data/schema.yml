@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: transporte_rodoviario_gps
+    database: Prefeitura
+    tables:
+      - name: gps_brt_data
+        description: "View da tabela de dados do BRT."
+        columns:
+          - name: id
+            description: "Id do registro"
+          - name: codigo
+            description: "Código do ônibus"
+          - name: latitude
+            description: "Latitude do veículo"
+          - name: longitude
+            description: "Longitude do veículo"
+          - name: velocidade
+            description: "Velocidade do BRT"

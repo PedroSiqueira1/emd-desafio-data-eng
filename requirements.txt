@@ -1,3 +1,7 @@
 prefect==0.15.9
-requests
-pandas
+requests==2.26.0
+pandas==2.0.3
+psycopg2==2.9.9
+dbt-postgres==1.7.4
+python-dotenv==1.0.0
+sqlalchemy==2.0.23
