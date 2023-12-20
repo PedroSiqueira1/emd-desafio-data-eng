@@ -65,5 +65,3 @@ def create_environment() -> None:
     conn.close()
 
     log("Tabela criada com sucesso!")
-
-create_environment()
