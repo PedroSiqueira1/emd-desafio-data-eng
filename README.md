@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
  ```
     HOST=seu_host
-    USER=seu_usario
+    USER=seu_usuário
     PASSWORD=sua_senha
     DATABASE=seu_database
     PORT=sua_porta
@@ -61,7 +61,7 @@ python run.py
 
 - Quando o script acabar de rodar, a tabela estará populada com os dados da API!
 
-- (Opcional) Se você possuir o Prefect Cloud configurado, é possível utilizá-lo para monitorar as runs do pipeline, para isso rode o comando `prefect agent local start` em um terminal dentro do diretório do projeto e acompanhe pelo site `cloud.prefect.io`
+- (Opcional) Se você possuir o Prefect Cloud configurado, é possível utilizá-lo para monitorar as runs da pipeline, para isso rode o comando `prefect agent local start` em um terminal dentro do diretório do projeto e acompanhe pelo site `cloud.prefect.io`
 
 
 ### Como gerar a tabela derivada usando o DBT
