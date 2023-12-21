@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Schedules
-Run schedule for BRT pipeline tasks each 10 minutes
+Run schedule for BRT pipeline tasks each minute for 15 minutes
 
 """
 
